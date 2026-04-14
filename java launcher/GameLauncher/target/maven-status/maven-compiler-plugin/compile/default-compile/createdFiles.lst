@@ -1,0 +1,9 @@
+com\gamelauncher\model\GameLibrary.class
+com\gamelauncher\ui\MainController.class
+com\gamelauncher\ui\GameLauncherApp.class
+com\gamelauncher\ui\AddGameController.class
+com\gamelauncher\model\Game.class
+com\gamelauncher\ui\CustomizeController.class
+com\gamelauncher\model\PCGame.class
+com\gamelauncher\model\GameHyperlink.class
+com\gamelauncher\model\PCGame$LaunchType.class

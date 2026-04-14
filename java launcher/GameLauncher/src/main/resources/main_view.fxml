@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gamelauncher.ui.MainController"
+            fx:id="rootPane"
+            style="-fx-background-color: #1a1a2e;">
+    
+    <!-- Top Header -->
+    <top>
+        <VBox spacing="0">
+            <!-- Title Bar -->
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #16213e; -fx-padding: 15;">
+                <ImageView fx:id="headerIconView" fitWidth="28" fitHeight="28" preserveRatio="true"/>
+                <Label text="Tony Game Launcher - Java Edition" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #e94560;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- Theme Controls -->
+                <HBox spacing="8" alignment="CENTER_RIGHT" style="-fx-padding:2 0 2 0;">
+                    <Button text="🎨 Customize" onAction="#handleOpenCustomizeDialog" style="-fx-background-color: #9c27b0; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                    <Separator orientation="VERTICAL" style="-fx-padding: 0 5;"/>
+                    <Label text="Text:" style="-fx-text-fill:#ccc;"/>
+                    <ColorPicker fx:id="textColorPicker" value="#FFFFFF"/>
+                    <Label text="BG:" style="-fx-text-fill:#ccc;"/>
+                    <ColorPicker fx:id="bgColorPicker" value="#1a1a2e"/>
+                    <Button text="Apply" onAction="#applyTheme" style="-fx-background-color:#e94560; -fx-text-fill:white;"/>
+                </HBox>
+                
+                <!-- Search Box -->
+                <TextField fx:id="searchField" promptText="Search games..." 
+                          style="-fx-max-width: 300px; -fx-pref-width: 250px; -fx-background-radius: 20; -fx-padding: 8 15;" HBox.hgrow="ALWAYS"/>
+                <Button text="🔍 Search" onAction="#handleSearch" 
+                        style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-background-radius: 20;"/>
+            </HBox>
+            
+            <!-- Action Bar -->
+            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #0f3460; -fx-padding: 10 15;">
+                <Button text="➕ Add Game" onAction="#handleAddGame" 
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button text="🗑️ Remove Selected" onAction="#handleRemoveGame" fx:id="removeButton"
+                        style="-fx-background-color: #f44336; -fx-text-fill: white;" disable="true"/>
+                <Separator orientation="VERTICAL" style="-fx-padding: 0 10;"/>
+                <Button text="📁 Open Folder" onAction="#handleOpenFolder" fx:id="openFolderButton"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white;" disable="true"/>
+                <Button text="▶️ Launch" onAction="#handleLaunchGame" fx:id="launchButton"
+                        style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;" disable="true"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="statusLabel" text="Ready" style="-fx-text-fill: #aaa;"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <!-- Left Sidebar -->
+    <left>
+        <VBox spacing="5" style="-fx-background-color: #16213e; -fx-padding: 15; -fx-min-width: 180; -fx-pref-width: 200;">
+            <Label text="CATEGORIES" style="-fx-text-fill: #888; -fx-font-size: 12px; -fx-font-weight: bold; -fx-underline: false;"/>
+            <Separator style="-fx-padding: 5 0; -fx-border-color: transparent;"/>
+            
+            <ToggleButton text="📋 All Games" fx:id="allGamesBtn" onAction="#handleCategorySelect"
+                         style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-pref-width: 100%; -fx-wrap-text: true; -fx-text-overrun: ellipsis; -fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-color: transparent;"
+                         selected="true"/>
+            <ToggleButton text="⭐ Favorites" fx:id="favoritesBtn" onAction="#handleCategorySelect"
+                         style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-pref-width: 100%; -fx-wrap-text: true; -fx-text-overrun: ellipsis; -fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-color: transparent;"/>
+            <ToggleButton text="🕐 Recently Played" fx:id="recentBtn" onAction="#handleCategorySelect"
+                         style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-pref-width: 100%; -fx-wrap-text: true; -fx-text-overrun: ellipsis; -fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-color: transparent;"/>
+            
+            <Separator style="-fx-padding: 10 0;"/>
+            <FlowPane fx:id="customCategoriesBox" orientation="HORIZONTAL" hgap="6" vgap="6" style="-fx-padding: 4;" prefWrapLength="300"/>
+            
+            <Region VBox.vgrow="ALWAYS"/>
+            
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Button text="➕ Add Category" onAction="#handleAddCategory"
+                        style="-fx-background-color: transparent; -fx-text-fill: #4CAF50; -fx-border-color: #4CAF50; -fx-border-radius: 5;"/>
+                <Button text="🗑️ Remove Category" onAction="#handleRemoveCategory" fx:id="removeCategoryButton"
+                        style="-fx-background-color: transparent; -fx-text-fill: #f44336; -fx-border-color: #f44336; -fx-border-radius: 5;"/>
+            </HBox>
+        </VBox>
+    </left>
+    
+    <!-- Center Content - Game Grid -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: #1a1a2e;">
+            <FlowPane fx:id="gamesContainer" 
+                     style="-fx-background-color: #1a1a2e; -fx-padding: 20;"
+                     hgap="20" vgap="20"
+                     alignment="TOP_LEFT"/>
+        </ScrollPane>
+    </center>
+    
+    <!-- Right Panel - Game Details -->
+    <right>
+        <VBox fx:id="detailsPanel" spacing="15" 
+              style="-fx-background-color: #16213e; -fx-padding: 20; -fx-min-width: 280; -fx-pref-width: 300;"
+              visible="false" managed="false">
+            
+            <Label text="Game Details" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #e94560;"/>
+            <Separator style="-fx-padding: 5 0;"/>
+            
+            <!-- Game Icon Placeholder -->
+            <StackPane style="-fx-background-color: #0f3460; -fx-min-height: 120; -fx-pref-height: 150; -fx-background-radius: 10;">
+                <ImageView fx:id="gameIconLabel" fitWidth="60" fitHeight="60" preserveRatio="true"/>
+            </StackPane>
+            
+            <Label fx:id="detailTitle" text="Game Title" wrapText="true"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            
+            <Label fx:id="detailPlatform" text="Platform" 
+                   style="-fx-text-fill: #888; -fx-font-size: 12px;"/>
+            
+            <Separator style="-fx-padding: 5 0;"/>
+            
+            <Label text="Description" style="-fx-text-fill: #888; -fx-font-size: 12px;"/>
+            <Label fx:id="detailDescription" text="No description available." wrapText="true"
+                   style="-fx-text-fill: #ccc;"/>
+            
+            <Separator style="-fx-padding: 5 0;"/>
+            
+            <HBox spacing="10">
+                <Label text="Playtime:" style="-fx-text-fill: #888;"/>
+                <Label fx:id="detailPlaytime" text="0 hours" style="-fx-text-fill: #4CAF50;"/>
+            </HBox>
+            
+            <HBox spacing="10">
+                <Label text="Last Played:" style="-fx-text-fill: #888;"/>
+                <Label fx:id="detailLastPlayed" text="Never" style="-fx-text-fill: #ccc;"/>
+            </HBox>
+            
+            <Separator style="-fx-padding: 5 0;"/>
+            
+            <Label text="Launch Method" style="-fx-text-fill: #888; -fx-font-size: 12px;"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ComboBox fx:id="launchTypeCombo" promptText="Select launch method" 
+                         style="-fx-pref-width: 120px; -fx-background-color: #0f3460; -fx-text-fill: white; -fx-border-color: #0f3460;"/>
+                <ChoiceBox fx:id="primaryLinkChoice" disable="true"
+                          style="-fx-pref-width: 140px; -fx-background-color: #0f3460; -fx-text-fill: white; -fx-border-color: #0f3460;"/>
+            </HBox>
+            
+            <Separator style="-fx-padding: 5 0;"/>
+            
+            <Label text="Links" style="-fx-text-fill: #888; -fx-font-size: 12px;"/>
+            <VBox fx:id="linksContainer" spacing="5"/>
+            
+            <Button text="➕ Add Link" onAction="#handleAddLink"
+                    style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-border-color: #2196F3; -fx-border-radius: 5;"/>
+            <Button text="🕒 Edit Playtime" onAction="#handleEditPlaytime"
+                    style="-fx-background-color: transparent; -fx-text-fill: #FFC107; -fx-border-color: #FFC107; -fx-border-radius: 5;"/>
+            <Button fx:id="addToCategoryButton" text="📌 Add To Category" onAction="#handleAddToCategory"
+                    style="-fx-background-color: transparent; -fx-text-fill: #9C27B0; -fx-border-color: #9C27B0; -fx-border-radius: 5;"/>
+            <Button fx:id="removeFromCategoryButton" text="➖ Remove From Category" onAction="#handleRemoveFromCategory"
+                    style="-fx-background-color: transparent; -fx-text-fill: #F44336; -fx-border-color: #F44336; -fx-border-radius: 5;"/>
+            
+            <Region VBox.vgrow="ALWAYS"/>
+            
+            <Button text="✏️ Edit Game" onAction="#handleEditGame"
+                    style="-fx-background-color: #FFC107; -fx-text-fill: black; -fx-font-weight: bold;"/>
+        </VBox>
+    </right>
+    
+    <!-- Bottom Footer -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="15" 
+              style="-fx-background-color: #16213e; -fx-padding: 10 15; -fx-border-color: #0f3460; -fx-border-width: 1 0 0 0;">
+            <Label fx:id="gameCountLabel" text="0 games" style="-fx-text-fill: #888;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Tony Game Launcher - Java Edition v1.0" style="-fx-text-fill: #666; -fx-font-size: 11px;"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

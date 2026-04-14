@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gamelauncher.ui.CustomizeController"
+            style="-fx-background-color: #1a1a2e;"
+            prefWidth="600" prefHeight="500">
+    
+    <!-- Center: Scrollable Color Picker Grid -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: #1a1a2e; -fx-control-inner-background: #1a1a2e;">
+            <VBox spacing="15" style="-fx-padding: 20;">
+                
+                <!-- Title -->
+                <Label text="UI Customization" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #e94560;"/>
+                
+                <!-- Text Color -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Text Color:" style="-fx-text-fill: white; -fx-min-width: 150;" prefWidth="150"/>
+                    <ColorPicker fx:id="textColorPicker" value="#FFFFFF" prefWidth="80"/>
+                    <Label fx:id="textColorPreview" style="-fx-min-width: 40; -fx-padding: 5; -fx-background-color: #FFFFFF; -fx-text-fill: black;" text="ABC" alignment="CENTER"/>
+                </HBox>
+                
+                <!-- Background Color -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Background Color:" style="-fx-text-fill: white; -fx-min-width: 150;" prefWidth="150"/>
+                    <ColorPicker fx:id="bgColorPicker" value="#1a1a2e" prefWidth="80"/>
+                    <Label fx:id="bgColorPreview" style="-fx-min-width: 40; -fx-padding: 5; -fx-background-color: #1a1a2e; -fx-border-color: #888;" text="Bg" alignment="CENTER"/>
+                </HBox>
+                
+                <!-- Card Background Color -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Card Background:" style="-fx-text-fill: white; -fx-min-width: 150;" prefWidth="150"/>
+                    <ColorPicker fx:id="cardBgColorPicker" value="#16213e" prefWidth="80"/>
+                    <Label fx:id="cardBgColorPreview" style="-fx-min-width: 40; -fx-padding: 5; -fx-background-color: #16213e; -fx-border-color: #888;" text="Card" alignment="CENTER"/>
+                </HBox>
+                
+                <!-- Card Border Color -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Card Border Color:" style="-fx-text-fill: white; -fx-min-width: 150;" prefWidth="150"/>
+                    <ColorPicker fx:id="cardBorderColorPicker" value="#0f3460" prefWidth="80"/>
+                    <Label fx:id="cardBorderColorPreview" style="-fx-min-width: 40; -fx-padding: 5; -fx-background-color: #0f3460; -fx-border-color: #888;" text="Border" alignment="CENTER"/>
+                </HBox>
+                
+                <!-- Accent/Button Color -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Accent Color:" style="-fx-text-fill: white; -fx-min-width: 150;" prefWidth="150"/>
+                    <ColorPicker fx:id="accentColorPicker" value="#e94560" prefWidth="80"/>
+                    <Label fx:id="accentColorPreview" style="-fx-min-width: 40; -fx-padding: 5; -fx-background-color: #e94560; -fx-text-fill: white;" text="Accent" alignment="CENTER"/>
+                </HBox>
+                
+                <!-- Header Background Color -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Header Background:" style="-fx-text-fill: white; -fx-min-width: 150;" prefWidth="150"/>
+                    <ColorPicker fx:id="headerBgColorPicker" value="#16213e" prefWidth="80"/>
+                    <Label fx:id="headerBgColorPreview" style="-fx-min-width: 40; -fx-padding: 5; -fx-background-color: #16213e; -fx-border-color: #888;" text="Header" alignment="CENTER"/>
+                </HBox>
+                
+                <!-- Header Text Color -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Header Text Color:" style="-fx-text-fill: white; -fx-min-width: 150;" prefWidth="150"/>
+                    <ColorPicker fx:id="headerTextColorPicker" value="#e94560" prefWidth="80"/>
+                    <Label fx:id="headerTextColorPreview" style="-fx-min-width: 40; -fx-padding: 5; -fx-background-color: #e94560; -fx-text-fill: white;" text="Title" alignment="CENTER"/>
+                </HBox>
+                
+                <!-- Sidebar Background Color -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Sidebar Background:" style="-fx-text-fill: white; -fx-min-width: 150;" prefWidth="150"/>
+                    <ColorPicker fx:id="sidebarBgColorPicker" value="#16213e" prefWidth="80"/>
+                    <Label fx:id="sidebarBgColorPreview" style="-fx-min-width: 40; -fx-padding: 5; -fx-background-color: #16213e; -fx-border-color: #888;" text="Side" alignment="CENTER"/>
+                </HBox>
+                
+                <!-- Button Color -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Button Background:" style="-fx-text-fill: white; -fx-min-width: 150;" prefWidth="150"/>
+                    <ColorPicker fx:id="buttonBgColorPicker" value="#4CAF50" prefWidth="80"/>
+                    <Label fx:id="buttonBgColorPreview" style="-fx-min-width: 40; -fx-padding: 5; -fx-background-color: #4CAF50; -fx-text-fill: white;" text="Btn" alignment="CENTER"/>
+                </HBox>
+                
+                <!-- Delete Button Color -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Delete Button Color:" style="-fx-text-fill: white; -fx-min-width: 150;" prefWidth="150"/>
+                    <ColorPicker fx:id="deleteButtonColorPicker" value="#f44336" prefWidth="80"/>
+                    <Label fx:id="deleteButtonColorPreview" style="-fx-min-width: 40; -fx-padding: 5; -fx-background-color: #f44336; -fx-text-fill: white;" text="Del" alignment="CENTER"/>
+                </HBox>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+    <!-- Bottom: Action Buttons -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 15; -fx-background-color: #0f3460;">
+            <Button text="Reset to Defaults" onAction="#handleResetDefaults" 
+                    style="-fx-background-color: #888; -fx-text-fill: white; -fx-padding: 8 15;"/>
+            <Button text="Cancel" onAction="#handleCancel" 
+                    style="-fx-background-color: #666; -fx-text-fill: white; -fx-padding: 8 15;"/>
+            <Button text="Apply" onAction="#handleApply" 
+                    style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 25;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,311 @@
+/* Tony Game Launcher - Java Edition Stylesheet */
+
+/* Root styles */
+.root {
+    -fx-font-family: 'Segoe UI', 'System', sans-serif;
+}
+
+/* ScrollPane styling */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: #16213e;
+}
+
+.scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
+    -fx-background-color: #0f3460;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:vertical .thumb:hover, .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #e94560;
+}
+
+/* TextField styling */
+.text-field {
+    -fx-background-color: #16213e;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #666;
+    -fx-border-color: #0f3460;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12;
+}
+
+.text-field:focused {
+    -fx-border-color: #e94560;
+}
+
+/* TextArea styling */
+.text-area {
+    -fx-background-color: #16213e;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #666;
+}
+
+.text-area .content {
+    -fx-background-color: #16213e;
+}
+
+/* Button styling */
+.button {
+    -fx-cursor: hand;
+    -fx-padding: 8 16;
+    -fx-background-radius: 5;
+}
+
+.button:hover {
+    -fx-opacity: 0.9;
+}
+
+.button:pressed {
+    -fx-opacity: 0.8;
+}
+
+.button:disabled {
+    -fx-opacity: 0.5;
+}
+
+/* ToggleButton styling */
+.toggle-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-padding: 8 12;
+    -fx-background-radius: 5;
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+    -fx-effect: none;
+}
+
+.toggle-button:hover {
+    -fx-background-color: #0f3460;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #e94560;
+    -fx-text-fill: white;
+}
+
+.toggle-button:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+    -fx-effect: none;
+}
+
+.toggle-button:selected:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+    -fx-effect: none;
+}
+
+/* Hyperlink styling */
+.hyperlink {
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #64B5F6;
+    -fx-underline: true;
+}
+
+/* Separator styling */
+.separator .line {
+    -fx-border-color: #0f3460;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* Tooltip styling */
+.tooltip {
+    -fx-background-color: #16213e;
+    -fx-text-fill: white;
+    -fx-border-color: #0f3460;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12;
+}
+
+/* Dialog styling */
+.dialog-pane {
+    -fx-background-color: #1a1a2e;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: white;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color: #16213e;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-radius: 5;
+    -fx-padding: 8 20;
+}
+
+.dialog-pane .button-bar .button:first-child {
+    -fx-background-color: #e94560;
+    -fx-text-fill: white;
+}
+
+.dialog-pane .button-bar .button:last-child {
+    -fx-background-color: transparent;
+    -fx-text-fill: #888;
+    -fx-border-color: #0f3460;
+}
+
+/* Alert styling */
+.alert {
+    -fx-background-color: #1a1a2e;
+}
+
+.alert .label {
+    -fx-text-fill: white;
+}
+
+/* Context menu styling */
+.context-menu {
+    -fx-background-color: #16213e;
+    -fx-border-color: #0f3460;
+}
+
+.menu-item {
+    -fx-text-fill: white;
+}
+
+.menu-item:hover, .menu-item:focused {
+    -fx-background-color: #e94560;
+}
+
+/* ComboBox styling */
+.combo-box {
+    -fx-background-color: #16213e;
+    -fx-border-color: #0f3460;
+    -fx-border-radius: 5;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: #16213e;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #16213e;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #e94560;
+}
+
+/* ListView styling */
+.list-view {
+    -fx-background-color: #16213e;
+}
+
+.list-view .list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: #0f3460;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: #e94560;
+}
+
+/* TabPane styling */
+.tab-pane {
+    -fx-background-color: #1a1a2e;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #16213e;
+}
+
+.tab {
+    -fx-background-color: #0f3460;
+    -fx-text-fill: white;
+}
+
+.tab:selected {
+    -fx-background-color: #e94560;
+}
+
+.tab-label {
+    -fx-text-fill: white;
+}
+
+/* ProgressBar styling */
+.progress-bar {
+    -fx-background-color: #16213e;
+}
+
+.progress-bar .track {
+    -fx-background-color: #0f3460;
+}
+
+.progress-bar .bar {
+    -fx-background-color: #e94560;
+}
+
+/* Slider styling */
+.slider .track {
+    -fx-background-color: #0f3460;
+}
+
+.slider .thumb {
+    -fx-background-color: #e94560;
+}
+
+/* CheckBox styling */
+.check-box {
+    -fx-text-fill: white;
+}
+
+.check-box .box {
+    -fx-background-color: #16213e;
+    -fx-border-color: #0f3460;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #e94560;
+}
+
+/* RadioButton styling */
+.radio-button {
+    -fx-text-fill: white;
+}
+
+.radio-button .radio {
+    -fx-background-color: #16213e;
+    -fx-border-color: #0f3460;
+}
+
+.radio-button:selected .radio {
+    -fx-background-color: #e94560;
+}
