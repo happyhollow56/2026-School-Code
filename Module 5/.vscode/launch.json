@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ColorSlider",
+            "request": "launch",
+            "mainClass": "ColorSlider",
+            "projectName": "Module 5_a93899db"
+        },
+        {
+            "type": "java",
             "name": "Launch FlagGrid",
             "request": "launch",
             "mainClass": "FlagGrid",
