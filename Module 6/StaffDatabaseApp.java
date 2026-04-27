@@ -22,9 +22,9 @@ public class StaffDatabaseApp extends JFrame {
 
     // --- Database configuration ---
     // Update these values for your database setup
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/your_database";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "your_password";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/staffdb";
+    private static final String DB_USER = "staffuser";
+    private static final String DB_PASSWORD = "staffpassword";
 
     public StaffDatabaseApp() {
         setTitle("Staff Database Application");
