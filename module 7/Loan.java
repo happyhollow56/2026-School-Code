@@ -1,4 +1,4 @@
-// Loan.java - Listing 10.2 (Loan class)
+
 public class Loan {
     private double annualInterestRate;
     private int numberOfYears;
