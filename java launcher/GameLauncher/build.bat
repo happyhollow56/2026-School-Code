@@ -1,5 +1,5 @@
 @echo off
-REM Build script for Windows
+setlocal enabledelayedexpansion
 
 echo ========================================
 echo   Tony Game Launcher - Java Edition - Build Script
@@ -8,56 +8,38 @@ echo.
 
 REM Check if Maven is installed
 where mvn >nul 2>nul
-if %errorlevel% neq 0 (
+if !errorlevel! neq 0 (
     echo ERROR: Maven is not installed or not in PATH
     echo Please install Maven 3.6+ and try again
     exit /b 1
 )
 
-REM Check if Java is installed
-where java >nul 2>nul
-if %errorlevel% neq 0 (
-    echo ERROR: Java is not installed or not in PATH
-    echo Please install Java 17+ and try again
+call mvn -version
+echo.
+
+echo Cleaning previous build...
+call mvn clean
+if !errorlevel! neq 0 (
+    echo ERROR: Clean failed
     exit /b 1
 )
-
-echo Java version:
-java -version
 echo.
 
-echo Maven version:
-mvn -version
-echo.
-
-REM Clean and compile
-echo Cleaning previous build...
-mvn clean
-echo.
-
-REM Compile
 echo Compiling...
-mvn compile
-if %errorlevel% neq 0 (
+call mvn compile
+if !errorlevel! neq 0 (
     echo ERROR: Compilation failed
     exit /b 1
 )
 echo.
 
-REM Run tests
 echo Running tests...
-mvn exec:java -Dexec.mainClass="com.gamelauncher.GameLauncherTest" -Dexec.classpathScope=compile
-if %errorlevel% neq 0 (
-    echo WARNING: Some tests failed
-) else (
-    echo All tests passed!
-)
+call mvn test
 echo.
 
-REM Package
 echo Packaging application...
-mvn package -DskipTests
-if %errorlevel% neq 0 (
+call mvn package -DskipTests
+if !errorlevel! neq 0 (
     echo ERROR: Packaging failed
     exit /b 1
 )
@@ -73,5 +55,3 @@ echo.
 echo Or run the JAR directly:
 echo   java -jar target/game-launcher-1.0-SNAPSHOT-launcher.jar
 echo.
-
-pause
